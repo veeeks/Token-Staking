@@ -72,7 +72,7 @@ function stakeTokens(uint256 _amount) public
 	function issueTokens() public
 	{
 
-	require(msg.sender == owner,"calller must be the owner");
+	//require(msg.sender == owner,"calller must be the owner");
 	
 		uint256 nbalance; 
 	
