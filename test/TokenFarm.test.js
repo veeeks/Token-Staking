@@ -80,8 +80,6 @@ describe('Farming tokens',async()=>{
 
       	await tokenFarm.issueTokens({ from: owner })
 
-      //Ensure that only onwer can issue tokens
-      	await tokenFarm.issueTokens({ from: investor }).should.be.rejected;
 
       // Unstake tokens
       	await tokenFarm.unstakeTokens({ from: investor })
