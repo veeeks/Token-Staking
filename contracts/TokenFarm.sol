@@ -72,7 +72,7 @@ function stakeTokens(uint256 _amount) public
 	function issueTokens() public
 	{
 
-	//require(msg.sender == owner,"calller must be the owner");
+	require(msg.sender == owner,"calller must be the owner");
 	
 		uint256 nbalance; 
 	
@@ -83,15 +83,15 @@ function stakeTokens(uint256 _amount) public
 		if(balance >0 && balance <=1000)
 		
 		{
-			nbalance = balance + ((balance*4) / 100 ) * ((now/31556926)-(timeOfStaked[msg.sender] /31556926)); // calculating the years of vesting period
+			nbalance = balance + ((balance*4) / 100 ) * ((now/86400)-(timeOfStaked[msg.sender] /86400)/365); // calculating the years of vesting period
 		}
 		else if(balance > 1000 && balance <=2000) 
 		{
-			nbalance = balance + ((balance * 8)/100) * ((now/31556926)-(timeOfStaked[msg.sender]/31556926));	
+			nbalance = balance + ((balance * 8)/100) * ((now/86400)-(timeOfStaked[msg.sender] /86400)/365);	
 		}
 		else if(balance > 2000)
 		{
-			nbalance = balance + ((balance * 10) / 100) *((now/31556926)-(timeOfStaked[msg.sender] /31556926)); 
+			nbalance = balance + ((balance * 10) / 100) *((now/86400)-(timeOfStaked[msg.sender] /86400)/365);
 		}
 		
 		dappToken.transfer(msg.sender,nbalance); // Reward transferring...
